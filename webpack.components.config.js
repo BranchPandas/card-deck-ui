@@ -2,18 +2,8 @@ const path = require('path');
 const fs = require('fs');
 
 module.exports = {
-    entry: fs.readdirSync(path.resolve(__dirname, 'app/components')).reduce((acc, folder) => {
-        // check if folder
-        if (!fs.lstatSync(path.resolve(__dirname, 'app/components', folder)).isDirectory()) {
-            return acc;
-        }
-
-        const file = fs.readdirSync(path.resolve(__dirname, 'app/components', folder)).find(file => file.endsWith('.js'));
-        if (file && file.endsWith('.js')) {
-            acc[file.replace('.js', '')] = path.resolve(__dirname, 'app/components', folder);
-        }
-        return acc;
-    }, {}),
+ 
+    entry: "./app/components/registerComponent.js",
     mode: 'development',
     output: {
         filename: 'component-builds.js',

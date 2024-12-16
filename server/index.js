@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const fs = require('fs');
+const e = require('express');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -17,8 +18,15 @@ const rootPath = path.join(__dirname, '../app');
 // Serve static files
 app.use(express.static(path.join(rootPath, '/assets')));
 
-// serve all pages in the pages directory
 
+app.get('/components', (req, res) => {
+    res.sendFile(path.join(rootPath, '/components/component-builds.js'));
+})
+
+// app.use(express.static(path.join(rootPath, '/components')));
+
+
+// serve all pages in the pages directory
 // Serve all folders in pages as a page
 const pagesDir = path.join(rootPath, '/pages');
 fs.readdir(pagesDir, (err, folders) => {
