@@ -1,1 +1,1 @@
-<div class="card"> Card </div>
+<div class="card"> Card ${rank ? "Rank: " + rank : ""} ${suit ? "Suit: " + suit : ""}</div>

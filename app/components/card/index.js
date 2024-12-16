@@ -6,4 +6,14 @@ import style from "./style.scss";
 
 createCustomElement('card-component', function() {
     console.log('card loaded');
-}, cardTemplate, style)
+    
+    //@TODO Import the image for the card
+
+    //@TODO Map the rank/suit combo to the right image
+    
+    //@TODO Test the card component by creating new card elements
+
+    
+}, cardTemplate, style, {
+    attributes: ['rank', 'suit']
+})

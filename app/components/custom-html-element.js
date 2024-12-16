@@ -1,4 +1,6 @@
-export async function createCustomElement(name, onload, html, css, options ={}) {
+export async function createCustomElement(name, onload, html, css, options = {
+    attributes: [],
+}) {
     // create an HTML template element
     const template = document.createElement('template');
 
@@ -29,35 +31,24 @@ export async function createCustomElement(name, onload, html, css, options ={}) 
             this.updateTemplate();
         }
 
-        
-
-
-
-        attributeChangedCallback(name, oldValue, newValue) {
-            if (oldValue !== newValue) {
-                this.updateTemplate();
-            }
-        }
-
-        static get observedAttributes() {
-            return [
-                'fieldName', 'alias', 'required', 'type', 'multiple', 'accept', 'labelClass', 'redirect', 
-                'loginImage', 'signupImage', 'description', 'width', 'slotLinks', 'placeholder', 'test', 
-                'mailing-address', 'wa-state-business-license-ubi-number', 'website-social-media', 'medium', 
-                'email', 'artistMentor', 'digitalImage1', 'digitalImage2', 'digitalImage4', 'hasBeenReviewed', 
-                'phone', 'digitalImage3', 'firstName', 'studio-address', 'lastName', 'artistStatement', 
-                'isWithinBoundaries'
-            ];
-        }
 
         updateTemplate() {
+            // The random Id is to avoid conflicts with other instances of the same component
+            // in the same page (if you use the id attribute in a component.)
             const randomId = Math.floor(Math.random() * 1000000);
+
+            
+            // Get all the attributes of the custom element and pass them to the template
             const context = {
-                fieldName: this.getAttribute('fieldName') || 'defaultFieldName',
+                // set default values of "" (empty string) for all attributes
+                ...options.attributes.reduce((acc, attr) => {
+                    acc[attr] = this.getAttribute(attr) || '';
+                    return acc;
+                }, {}),
+                randomId
             };
 
-
-            const evaluatedTemplate = evaluateTemplate(html, context);
+            const evaluatedTemplate = evaluateTemplate(html, context, name);
             this.innerHTML = `
                 <style>
                 ${css}
@@ -72,7 +63,16 @@ export async function createCustomElement(name, onload, html, css, options ={}) 
 
 
 export // Function to evaluate template literals
-    function evaluateTemplate(template, context) {
+    function evaluateTemplate(template, context, name) {
     // console.log({ template, context });
-    return new Function(...Object.keys(context), `return \`${template}\`;`)(...Object.values(context));
+
+    // Avoiding an error by adding "" for elements that are not in the context
+    
+    try {
+        return new Function(...Object.keys(context), `return \`${template}\`;`)(...Object.values(context));
+    } catch (error) {
+        console.error(error);
+        return `[< ${ name} > didn't render properly: ${error} ]`;
+    }
+        
 }
