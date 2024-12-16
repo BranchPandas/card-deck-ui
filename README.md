@@ -8,7 +8,17 @@
   - Table
   - Organizing cards and other objects in to component files
 
-## Project Scope
+## Contributors 
+
+> See how to get started in the Github Wiki  
+> https://github.com/BranchPandas/card-deck-ui/wiki
+
+---
+
+
+### Project Scope
+
+We are just building the UI, with the intention of game play being added later. This project will create the mechanics for game play. Pluggins would be used to define game play.
 
 | Within Scope                             | Beyond Scope              |
 | ---------------------------------------- | ------------------------- |
@@ -16,15 +26,10 @@
 
 ## Tools
 
-- HTML
-  - Templates
-  - Pages
-- CSS
-  - SCSS
-- JavaScript
-  - NodeJS for webpack
-    - ... For building component library
-  - NodeJS for SCSS compiling 
+- HTML/CSS/JavaScript
+  - No frontend frameworks 
+- Express.js
+- Webpack.js
 
 ## Project Structure
 

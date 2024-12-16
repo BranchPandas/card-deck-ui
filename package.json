@@ -1,0 +1,32 @@
+{
+  "name": "card-deck-ui",
+  "version": "1.0.0",
+  "description": "- Create UI for a customizable card game\r   - Cards for main player\r   - Cards for opponents\r   - Table\r   - Organizing cards and other objects in to component files",
+  "main": "server/index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "start:w": "nodemon server/index.js",
+    "build:w": "webpack --config webpack.components.config.js --watch",
+    "webpack": "webpack",
+    "build:scss": "sass app/styles.scss dist/styles.css",
+    "watch:scss": "sass --watch app/styles.scss dist/styles.css",
+    "dev": "concurrently -k -n \"SERVER,WEBPACK\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run start:w\" \"npm run build:w\""
+  },
+  "keywords": [],
+  "author": "William Owen <william.owen.dev@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/preset-env": "^7.26.0",
+    "babel-loader": "^9.2.1",
+    "concurrently": "^9.1.0",
+    "css-loader": "^7.1.2",
+    "raw-loader": "^4.0.2",
+    "sass-loader": "^16.0.4",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
