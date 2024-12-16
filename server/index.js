@@ -19,8 +19,12 @@ const rootPath = path.join(__dirname, '../app');
 app.use(express.static(path.join(rootPath, '/assets')));
 
 
+// Shortcut urls for special files
 app.get('/components', (req, res) => {
     res.sendFile(path.join(rootPath, '/assets/webpack/component-builds.js'));
+})
+app.get('/global-styles.css', (req, res) => {
+    res.sendFile(path.join(rootPath, '/assets/styles/global-styles.css'));
 })
 
 // app.use(express.static(path.join(rootPath, '/components')));

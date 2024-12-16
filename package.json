@@ -8,9 +8,9 @@
     "start:w": "nodemon server/index.js",
     "build:w": "webpack --config webpack.components.config.js --watch",
     "webpack": "webpack",
-    "build:scss": "sass app/styles.scss dist/styles.css",
-    "watch:scss": "sass --watch app/styles.scss dist/styles.css",
-    "dev": "concurrently -k -n \"SERVER,WEBPACK\" -c \"bgBlue.bold,bgGreen.bold\" \"npm run start:w\" \"npm run build:w\""
+    "build:scss": "sass app/global-styles.scss app/assets/styles/global-styles.css",
+    "watch:scss": "sass --watch app/global-styles.scss app/assets/styles/global-styles.css",
+    "dev": "concurrently -k -n \"SERVER,WEBPACK,SCSS\" -c \"bgBlue.bold,bgGreen.bold,bgMagenta.bold\" \"npm run start:w\" \"npm run build:w\" \"npm run watch:scss\""
   },
   "keywords": [],
   "author": "William Owen <william.owen.dev@gmail.com>",
