@@ -32,6 +32,17 @@ module.exports = {
             {
                 test: /\.txt$/,
                 use: 'raw-loader'
+            },
+            {
+                test: /\.(png|jpg|jpeg|gif|svg)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[path][name].[ext]'
+                        }
+                    }
+                ]
             }
         ]
     },
