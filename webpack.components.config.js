@@ -7,7 +7,7 @@ module.exports = {
     mode: 'development',
     output: {
         filename: 'component-builds.js',
-        path: path.resolve(__dirname, 'app/components')
+        path: path.resolve(__dirname, 'app/assets/webpack')
     },
     module: {
         rules: [

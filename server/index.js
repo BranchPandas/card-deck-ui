@@ -20,7 +20,7 @@ app.use(express.static(path.join(rootPath, '/assets')));
 
 
 app.get('/components', (req, res) => {
-    res.sendFile(path.join(rootPath, '/components/component-builds.js'));
+    res.sendFile(path.join(rootPath, '/assets/webpack/component-builds.js'));
 })
 
 // app.use(express.static(path.join(rootPath, '/components')));
