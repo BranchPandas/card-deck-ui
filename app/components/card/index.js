@@ -13,7 +13,6 @@ createCustomElement('card-component', function() {
     
     //@TODO Test the card component by creating new card elements
 
-    
 }, cardTemplate, style, {
     attributes: ['rank', 'suit']
 })
